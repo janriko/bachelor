@@ -28,7 +28,6 @@ def map_json_to_python_obj(pythonObj: dict) -> JerichoDataset:
 def map_all_state_transitions_to_preprocessed_state(dataset: JerichoDataset) -> Dataset:
     # pre_processed_list: PreprocessedDataset = PreprocessedDataset(preprocessed_state=list())
     pre_processed_dict = {
-        "labels": [],
         "text": [],
         "text_plus_1": [],
         "graph": [],
@@ -38,12 +37,15 @@ def map_all_state_transitions_to_preprocessed_state(dataset: JerichoDataset) -> 
         for stateTransIndex in range((dataset[listIndex]).__len__()):
             # pre_processed_list.append(
             #     PreprocessedState(
-            pre_processed_dict["labels"].append(listIndex*dataset.__len__()+stateTransIndex)
-            pre_processed_dict["text"].append(concatenate_state_to_text_encoder_string(dataset[listIndex][stateTransIndex].state))
+            graph = concatenate_state_to_graph_encoder_string(dataset[listIndex][stateTransIndex].state.graph)
+            text = concatenate_state_to_text_encoder_string(dataset[listIndex][stateTransIndex].state)
+            graph_plus_text = graph + text
+
+            pre_processed_dict["text"].append(graph_plus_text)
             pre_processed_dict["text_plus_1"].append(concatenate_state_to_text_plus_1_encoder_string(dataset[listIndex][stateTransIndex].next_state))
-            pre_processed_dict["graph"].append(concatenate_state_to_graph_encoder_string(dataset[listIndex][stateTransIndex].state.graph))
-            pre_processed_dict["graph_diff"].append(concatenate_state_to_graph_encoder_string(dataset[listIndex][stateTransIndex].graph_diff))
-            #     )
+            pre_processed_dict["graph"].append(graph_plus_text)
+            pre_processed_dict["graph_diff"].append(concatenate_state_to_graph_encoder_string(dataset[listIndex][stateTransIndex].next_state.graph))
+    #     )
             # )
     return Dataset.from_dict(pre_processed_dict)
 
