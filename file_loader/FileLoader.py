@@ -1,9 +1,5 @@
-from io import StringIO
-from typing import Generic, TypeVar, List
-
 import json
 import pickle
-<<<<<<< HEAD
 from typing import List, Union
 
 from datasets import Dataset, DatasetDict
@@ -11,21 +7,6 @@ import preprocessing
 from data_models.raw_state.JerichoDataset import JerichoDataset
 from tokenizing import tokenize_text_and_graph, PipelineType
 
-=======
-
-from datasets import Dataset, DatasetDict
-
-import preprocessing
-from data_models.preprocessing.PreprocessedState import PreprocessedState
-from data_models.preprocessing.PreprocessedDataset import PreprocessedDataset
-from data_models.raw_state.JerichoDataset import JerichoDataset
-from data_models.tokenized.TokenizedDataset import TokenizedDataset
-
-# preprocessed_dataset_text_file = 'cached_data/PreprocessedDataset/preprocessed_states/concatenatedText.txt'
-# preprocessed_dataset_graph_file = 'cached_data/PreprocessedDataset/preprocessed_states/graphWithTriples.txt'
-from tokenizing import tokenize_text_and_graph
-
->>>>>>> parent of fade205... both models completely trained
 preprocessed_training_dataset_file = 'cached_data/preprocessed_training_dataset'
 preprocessed_testing_dataset_file = 'cached_data/preprocessed_testing_dataset'
 tokenized_dataset_file = 'cached_data/tokenized_dataset'

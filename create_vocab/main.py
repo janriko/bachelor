@@ -1,10 +1,6 @@
 import json
 
-<<<<<<< HEAD
 vocabulary: set = {'[GRAPH]', '[TRIPLE]', '[MASK]'}
-=======
-vocabulary: set = {'[GRAPH]', '[TRIPLE]'}
->>>>>>> parent of fade205... both models completely trained
 
 
 def add_dict_entries_to_vocab(python_obj: dict):

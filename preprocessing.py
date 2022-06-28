@@ -2,26 +2,17 @@ from typing import List, Dict
 
 from datasets import Dataset, DatasetDict
 from datasets.features import features
-<<<<<<< HEAD
 from transformers.file_utils import ExplicitEnum
 
 import file_loader
 from data_models import *
 from data_models.preprocessing import PreprocessedState
-=======
-
-import file_loader
-from data_models import *
->>>>>>> parent of fade205... both models completely trained
 from data_models.preprocessing.PreprocessedDataset import PreprocessedDataset
 from data_models.raw_state.JerichoDataset import JerichoDataset
 from data_models.raw_state.JerichoState import JerichoState
 from data_models.raw_state.JerichoStateTransition import JerichoStateTransition
 from data_models.raw_state.JerichoTransitionList import JerichoTransitionList
-<<<<<<< HEAD
 from tokenizing import PipelineType
-=======
->>>>>>> parent of fade205... both models completely trained
 
 
 def map_json_to_python_obj(pythonObj: dict) -> JerichoDataset:
@@ -37,6 +28,7 @@ def map_json_to_python_obj(pythonObj: dict) -> JerichoDataset:
 def map_all_state_transitions_to_preprocessed_state(dataset: JerichoDataset) -> Dataset:
     # pre_processed_list: PreprocessedDataset = PreprocessedDataset(preprocessed_state=list())
     pre_processed_dict = {
+        "labels": [],
         "text": [],
         "text_plus_1": [],
         "graph": [],
@@ -46,20 +38,17 @@ def map_all_state_transitions_to_preprocessed_state(dataset: JerichoDataset) -> 
         for stateTransIndex in range((dataset[listIndex]).__len__()):
             # pre_processed_list.append(
             #     PreprocessedState(
-            graph = concatenate_state_to_graph_encoder_string(dataset[listIndex][stateTransIndex].state.graph)
-            text = concatenate_state_to_text_encoder_string(dataset[listIndex][stateTransIndex].state)
-            graph_plus_text = graph + text
-
-            pre_processed_dict["text"].append(graph_plus_text)
+            pre_processed_dict["labels"].append(listIndex*dataset.__len__()+stateTransIndex)
+            pre_processed_dict["text"].append(concatenate_state_to_text_encoder_string(dataset[listIndex][stateTransIndex].state))
             pre_processed_dict["text_plus_1"].append(concatenate_state_to_text_plus_1_encoder_string(dataset[listIndex][stateTransIndex].next_state))
-            pre_processed_dict["graph"].append(graph_plus_text)
-            pre_processed_dict["graph_diff"].append(concatenate_state_to_graph_encoder_string(dataset[listIndex][stateTransIndex].next_state.graph))
+            pre_processed_dict["graph"].append(concatenate_state_to_graph_encoder_string(dataset[listIndex][stateTransIndex].state.graph))
+            pre_processed_dict["graph_diff"].append(concatenate_state_to_graph_encoder_string(dataset[listIndex][stateTransIndex].graph_diff))
             #     )
             # )
     return Dataset.from_dict(pre_processed_dict)
 
 
-def concatenate_state_to_text_encoder_string(state: JerichoState) -> str:
+def concatenate_state_to_text_encoder_string(state: JerichoState) -> PreprocessedState:
     tags: Dict[str] = {
         "observableText": "[OBS]",
         "validActs": "[ACT]"
@@ -75,8 +64,7 @@ def concatenate_state_to_text_encoder_string(state: JerichoState) -> str:
     return return_str
 
 
-<<<<<<< HEAD
-def concatenate_state_to_text_plus_1_encoder_string(next_state: JerichoState) -> str:
+def concatenate_state_to_text_plus_1_encoder_string(next_state: JerichoState) -> PreprocessedState:
     valid_acts = "[ACT]"
 
     return_str = ""
@@ -90,15 +78,11 @@ def concatenate_state_to_text_plus_1_encoder_string(next_state: JerichoState) ->
     return return_str
 
 
-def concatenate_graph_triple(tag: str, graph_entry: List[str]) -> str:
-    return tag + graph_entry[0] + "§" + graph_entry[1] + "§" + graph_entry[2]
-=======
 def concatenate_graph_triple(tag: str, graph_entry: List[str]):
-    return tag + graph_entry[0] + "." + graph_entry[1] + "." + graph_entry[2]
->>>>>>> parent of fade205... both models completely trained
+    return tag + graph_entry[0] + "§" + graph_entry[1] + "§" + graph_entry[2]
 
 
-def concatenate_state_to_graph_encoder_string(graph: List[List[str]]) -> str:
+def concatenate_state_to_graph_encoder_string(graph: List[List[str]]):
     tags: Dict[str] = {
         "startingTag": "[GRAPH]",
         "inbetweenTag": "[TRIPLE]"
@@ -133,14 +117,9 @@ def preprocessing(pipeline_type: PipelineType, game: GameType = GameType.ALL) ->
     either get preprocessed dataset from cache (give file name as parameter)
     or recompile dataset from file (give filename with jericho dataset)
     """
-<<<<<<< HEAD
     test_set = "JerichoWorld-main/data/small_test_set" + game.value + ".json"
-    preprocessed_training_data_set: Dataset = file_loader.FileLoader.get_preprocessed_and_tokenized_text_and_graph(isTraining=True, file_name="JerichoWorld-main/data/small_training_set.json")
+    preprocessed_training_data_set: Dataset = file_loader.FileLoader.get_preprocessed_and_tokenized_text_and_graph(isTraining=True, file_name="JerichoWorld-main/data/train.json")
     preprocessed_testing_data_set: Dataset = file_loader.FileLoader.get_preprocessed_and_tokenized_text_and_graph(isTraining=False, file_name=test_set)
-=======
-    preprocessed_training_data_set: Dataset = file_loader.FileLoader.get_preprocessed_and_tokenized_text_and_graph(isTraining=True, file_name="JerichoWorld-main/data/small_training_set.json")
-    preprocessed_testing_data_set: Dataset = file_loader.FileLoader.get_preprocessed_and_tokenized_text_and_graph(isTraining=False, file_name="JerichoWorld-main/data/small_test_set.json")
->>>>>>> parent of fade205... both models completely trained
 
     dataset_dict = DatasetDict({"train": preprocessed_training_data_set, "test": preprocessed_testing_data_set})
 
@@ -148,11 +127,7 @@ def preprocessing(pipeline_type: PipelineType, game: GameType = GameType.ALL) ->
     create tokenized ids with dataset (give dataset)
     or load from cache (don't give dataset as parameter)
     """
-<<<<<<< HEAD
     tokenized_datasets: DatasetDict = file_loader.get_tokenized_text_and_graph_ids(pipeline_type, dataset_dict)
-=======
-    tokenized_datasets: DatasetDict = file_loader.get_tokenized_text_and_graph_ids(dataset_dict)
->>>>>>> parent of fade205... both models completely trained
 
     # print(token_ids.get("train")["t_input_ids"])
     # print(token_ids.get("train")["t_attention_mask"])

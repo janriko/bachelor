@@ -63,13 +63,14 @@ if __name__ == "__main__":
         output_dir="text_trainer",
         evaluation_strategy=IntervalStrategy.STEPS,
         learning_rate=3e-3,
-        num_train_epochs=15,
+        num_train_epochs=30,
         weight_decay=0.01,
         optim=OptimizerNames.ADAMW_TORCH,
         per_device_train_batch_size=16,
         per_device_eval_batch_size=16,
         load_best_model_at_end=True,
-        generation_num_beams=10,
+        fp16=True,
+        generation_num_beams=15,
         # seed=9235,
     )
 
@@ -83,4 +84,4 @@ if __name__ == "__main__":
 
     trainer.train()
 
-    trainer.save_model(output_dir="complete_trained_model_text")
+    trainer.save_model(output_dir="complete_trained_model_text_not_pretrained_gpt_2")

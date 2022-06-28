@@ -1,7 +1,7 @@
 """
 Training parameters
 """
-num_epochs = 3
+num_epochs = 2
 
 
 def num_training_steps(dataloader) -> int:
