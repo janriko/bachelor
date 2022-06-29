@@ -47,12 +47,12 @@ def get_preprocessed_and_tokenized_text_and_graph(isTraining: bool, file_name: s
     return preprocessed_dataset
 
 
-def get_tokenized_text_and_graph_ids(pipeline_type: PipelineType, dataset: DatasetDict = None) -> DatasetDict:
+def get_tokenized_text_and_graph_ids(pipeline_type: PipelineType, dataset: DatasetDict = None, remove_labels: bool = False) -> DatasetDict:
     if dataset is None:
         # load from cached file
         tokenized_dataset: DatasetDict = pickle.load(open(tokenized_dataset_file, 'rb'))
     else:
-        tokenized_dataset: DatasetDict = tokenize_text_and_graph(dataset, pipeline_type)
+        tokenized_dataset: DatasetDict = tokenize_text_and_graph(dataset, pipeline_type, remove_labels)
         # save dataset to cache file
         pickle.dump(tokenized_dataset, open(tokenized_dataset_file, 'wb'))
 

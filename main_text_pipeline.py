@@ -62,14 +62,14 @@ if __name__ == "__main__":
     training_args = Seq2SeqTrainingArguments(
         output_dir="text_trainer",
         evaluation_strategy=IntervalStrategy.STEPS,
-        learning_rate=3e-3,
+        learning_rate=1e-3,
         num_train_epochs=30,
         weight_decay=0.01,
         optim=OptimizerNames.ADAMW_TORCH,
         per_device_train_batch_size=16,
         per_device_eval_batch_size=16,
         load_best_model_at_end=True,
-        fp16=True,
+        # fp16=True,
         generation_num_beams=15,
         # seed=9235,
     )
@@ -79,7 +79,7 @@ if __name__ == "__main__":
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
-        callbacks=[EarlyStoppingCallback(early_stopping_patience=15)],
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=5)],
     )
 
     trainer.train()

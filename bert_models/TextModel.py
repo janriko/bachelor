@@ -2,12 +2,12 @@ from tokenize import Whitespace
 
 import torch
 from transformers import PretrainedConfig, BertModel, get_scheduler, TFGPT2LMHeadModel, GPT2Config, EncoderDecoderConfig, EncoderDecoderModel, BertConfig, GPT2Model, AutoModel, BertLMHeadModel, \
-    GPT2LMHeadModel
+    GPT2LMHeadModel, BertForMaskedLM
 from tqdm.auto import tqdm
 from transformers.modeling_outputs import BaseModelOutputWithPoolingAndCrossAttentions
 
+import text_graph_encoder
 import tokenizing
-from tokenizing import double_tokenizer_text
 
 text_action_token_id = 30523  # '[ACT]'
 text_pad_token_id = 0  # '[PAD]'
@@ -25,6 +25,7 @@ bert_config = BertConfig(
     output_hidden_states=True,
     output_attentions=True,
     use_cache=False,
+    return_dict=True
 )
 
 gpt_2_config = GPT2Config(
@@ -39,14 +40,14 @@ gpt_2_config = GPT2Config(
     n_layer=6,
 )
 
-encoder_decoder_config = EncoderDecoderConfig.from_encoder_decoder_configs(encoder_config=bert_config, decoder_config=gpt_2_config, output_scores=True)
-encoder_decoder_config.decoder_start_token_id = double_tokenizer_text.cls_token_id
-encoder_decoder_config.pad_token_id = double_tokenizer_text.pad_token_id
-
 
 def get_encoder_decoder_model(encoder, decoder) -> EncoderDecoderModel:  # , num_training_steps) -> (BertModel, AdamW, cpu, LambdaLR, tqdm):  # (EncoderDecoderModel, AdamW, cpu, LambdaLR, tqdm):
+    encoder_decoder_config = EncoderDecoderConfig.from_encoder_decoder_configs(encoder_config=text_graph_encoder.config, decoder_config=gpt_2_config, output_scores=True)
+    encoder_decoder_config.decoder_start_token_id = 1  # 50266  # double_tokenizer_text.cls_token_id
+    encoder_decoder_config.pad_token_id = 4  # 3  # double_tokenizer_text.pad_token_id
+
     encoder_decoder_model: EncoderDecoderModel = EncoderDecoderModel(config=encoder_decoder_config, encoder=encoder, decoder=decoder)
-    encoder_decoder_model.encoder.resize_token_embeddings(len(tokenizing.double_tokenizer_text))
+    encoder_decoder_model.encoder.resize_token_embeddings(15800)
     # encoder_decoder_model.decoder.resize_token_embeddings(len(tokenizing.double_tokenizer_text))
     # encoder_decoder_model: BertModel = encoder
     # optimizer: AdamW = AdamW(encoder_decoder_model.parameters(), lr=3e-4)
@@ -64,7 +65,9 @@ def get_encoder_decoder_model(encoder, decoder) -> EncoderDecoderModel:  # , num
 
 
 def get_text_encoder_data() -> BertModel:
-    text_encoder_model: BertModel = BertModel.from_pretrained("bert-base-uncased", config=bert_config)  # maybe use longformer-base-###
+    # text_encoder_model: BertModel = BertModel.from_pretrained("bert-base-uncased", config=bert_config)  # maybe use longformer-base-###
+    # text_encoder_model: BertModel = BertModel.from_pretrained("./text_graph_encoder_pretrained_loaded/")
+    text_encoder_model: BertModel = BertModel.from_pretrained("./text_graph_encoder_pretrained_empty/")
     # text_encoder_model.resize_token_embeddings(30522 + 2)
     return text_encoder_model
 

@@ -29,37 +29,43 @@ if __name__ == "__main__":
         return trimmed_pred
 
     def compute_f1(prediction: List[List], truth: List[List]):
-        f1_metric.compute(predictions=prediction, references=truth)
-        # f1 = 0
-        # for n in range(len(prediction)):
-        #     common_tokens = set(prediction[n]) & set(truth[n])
-        #     if len(common_tokens) == 0:
-        #         f1 += 0
-        #     prec = len(common_tokens) / len(prediction[n])
-        #     rec = len(common_tokens) / len(truth[n])
-        #     f1 += 2 * (prec * rec) / (prec + rec)
-        # return f1 / len(prediction)
+        # f1_metric.compute(predictions=prediction, references=truth)
+        f1 = 0
+        for n in range(len(prediction)):
+            common_tokens = set(prediction[n]) & set(truth[n])
+            if len(common_tokens) == 0:
+                f1 += 0
+            prec = len(common_tokens) / len(prediction[n])
+            rec = len(common_tokens) / len(truth[n])
+
+            if (prec and rec) == 0:
+                f1 += 0
+            else:
+                f1 += 2 * (prec * rec) / (prec + rec)
+
+            # f1 += 2 * (prec * rec) / (prec + rec)
+        return f1 / len(prediction)
 
 
     exact_match_metric = load("exact_match")
     f1_metric = load("f1")
 
     def compute_exact_match(prediction, truth):
-        return exact_match_metric.compute(predictions=prediction, references=truth)
-        # em = 0
-        # for n in range(len(prediction)):
-        #     em += int(str(prediction[n]) == str(truth[n]))
-        # return em / len(prediction)
+        # return exact_match_metric.compute(predictions=prediction, references=truth)
+        em = 0
+        for n in range(len(prediction)):
+            em += int(str(prediction[n]) == str(truth[n]))
+        return em / len(prediction)
 
     def compute_metrics(pred, labels):
-        f1 = compute_f1(prediction=pred, truth=labels)
-        em = compute_exact_match(prediction=pred, truth=labels)
         # pred = trim_prediction(prediction=pred)
         with open("text_predictions", "w") as outfile:
             outfile.write("\n".join(str(item) for item in pred))
         # labels = trim_prediction(prediction=labels)
         with open("text_labels", "w") as outfile:
             outfile.write("\n".join(str(item) for item in labels))
+        f1 = compute_f1(prediction=pred, truth=labels)
+        em = compute_exact_match(prediction=pred, truth=labels)
         return {"f1": f1, "em": em}
 
 
