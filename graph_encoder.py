@@ -10,7 +10,7 @@ from tokenizer.GraphTokenizer import GraphTokenizer
 if __name__ == "__main__":
     print(torch.__version__)
 
-    # torch.cuda.empty_cache()
+    torch.cuda.empty_cache()
 
     tokenizer = GraphTokenizer()
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
@@ -44,6 +44,5 @@ if __name__ == "__main__":
     eval_results = trainer.evaluate()
     print(f"Eval Outputs: {eval_results}")
     print(f"Perplexity: {math.exp(eval_results['eval_loss']):.2f}")
-    # model.save_pretrained(save_directory="graph_model_pretrained")
     trainer.save_model(output_dir="graph_model_pretrained")
 

@@ -3,9 +3,10 @@ import pickle
 from typing import List, Union
 
 from datasets import Dataset, DatasetDict
+
 import preprocessing
 from data_models.raw_state.JerichoDataset import JerichoDataset
-from tokenizing import tokenize_text_and_graph, PipelineType
+from tokenizing import tokenize_text_and_graph, PipelineType, GameType
 
 preprocessed_training_dataset_file = 'cached_data/preprocessed_training_dataset'
 preprocessed_testing_dataset_file = 'cached_data/preprocessed_testing_dataset'
@@ -47,12 +48,12 @@ def get_preprocessed_and_tokenized_text_and_graph(isTraining: bool, file_name: s
     return preprocessed_dataset
 
 
-def get_tokenized_text_and_graph_ids(pipeline_type: PipelineType, dataset: DatasetDict = None, remove_labels: bool = False) -> DatasetDict:
+def get_tokenized_text_and_graph_ids(pipeline_type: PipelineType, dataset: DatasetDict = None, remove_labels: bool = False, game_type: GameType = GameType.ALL) -> DatasetDict:
     if dataset is None:
         # load from cached file
         tokenized_dataset: DatasetDict = pickle.load(open(tokenized_dataset_file, 'rb'))
     else:
-        tokenized_dataset: DatasetDict = tokenize_text_and_graph(dataset, pipeline_type, remove_labels)
+        tokenized_dataset: DatasetDict = tokenize_text_and_graph(dataset, pipeline_type, remove_labels, game_type)
         # save dataset to cache file
         pickle.dump(tokenized_dataset, open(tokenized_dataset_file, 'wb'))
 

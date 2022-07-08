@@ -1,0 +1,120 @@
+Outputs for model: ./complete_trained_model_graph_1024_seed_3540/
+For the game: ZORK1
+{'f1_token_without_sep': 0.0064633888261851, 'em_token_without_sep': 0.3553261054560956, 'f1_token_with_sep': 0.0060754091422121894, 'em_token_with_sep': 0.3649746317853034, 'f1_graph_without_sep': 0.005052553611738149, 'em_graph_without_sep': nan, 'f1_graph_with_sep': 0.005052553611738149, 'em_graph_with_sep': nan}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_3540/
+For the game: LIBRARY
+{'f1_token_without_sep': 0.0061122260448521915, 'em_token_without_sep': 0.15166703314484678, 'f1_token_with_sep': 0.005889239296636086, 'em_token_with_sep': 0.16096452851521276, 'f1_graph_without_sep': 0.004682721712538226, 'em_graph_without_sep': 0.0076191425912207665, 'f1_graph_with_sep': 0.004682721712538226, 'em_graph_with_sep': 0.0076191425912207665}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_3540/
+For the game: DETECTIVE
+{'f1_token_without_sep': 0.005094326036866358, 'em_token_without_sep': 0.2836451119638102, 'f1_token_with_sep': 0.0053733438940092165, 'em_token_with_sep': 0.34290596834930165, 'f1_graph_without_sep': 0.004320276497695853, 'em_graph_without_sep': nan, 'f1_graph_with_sep': 0.004320276497695853, 'em_graph_with_sep': nan}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_3540/
+For the game: BALANCES
+{'f1_token_without_sep': 0.007517887205387195, 'em_token_without_sep': 0.2494922816878476, 'f1_token_with_sep': 0.00725418244949495, 'em_token_with_sep': 0.25467791142459417, 'f1_graph_without_sep': 0.005192550505050505, 'em_graph_without_sep': 0.018889034766651297, 'f1_graph_with_sep': 0.005192550505050505, 'em_graph_with_sep': 0.018889034766651297}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_3540/
+For the game: PENTARI
+{'f1_token_without_sep': 0.0056612318840579745, 'em_token_without_sep': 0.2761976655215392, 'f1_token_with_sep': 0.005746150362318841, 'em_token_with_sep': 0.2963269527945587, 'f1_graph_without_sep': 0.004019474637681159, 'em_graph_without_sep': nan, 'f1_graph_with_sep': 0.004019474637681159, 'em_graph_with_sep': nan}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_3540/
+For the game: ZTUU
+{'f1_token_without_sep': 0.006578057359307364, 'em_token_without_sep': 0.28174017817973995, 'f1_token_with_sep': 0.006024249188311688, 'em_token_with_sep': 0.28947506217742336, 'f1_graph_without_sep': 0.005259063852813853, 'em_graph_without_sep': 0.020534535169772654, 'f1_graph_with_sep': 0.005259063852813853, 'em_graph_with_sep': 0.020534535169772654}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_3540/
+For the game: LUDICORP
+{'f1_token_without_sep': 0.0070359634238310554, 'em_token_without_sep': 0.2833108173018, 'f1_token_with_sep': 0.0065540158371040725, 'em_token_with_sep': 0.29837445661797696, 'f1_graph_without_sep': 0.0049349547511312215, 'em_graph_without_sep': 0.019540624390114652, 'f1_graph_with_sep': 0.0049349547511312215, 'em_graph_with_sep': 0.019540624390114652}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_3540/
+For the game: DEEPHOME
+{'f1_token_without_sep': 0.006576554232804256, 'em_token_without_sep': 0.3405634015285792, 'f1_token_with_sep': 0.005989583333333334, 'em_token_with_sep': 0.34098919132619065, 'f1_graph_without_sep': 0.005915178571428571, 'em_graph_without_sep': 0.029668016186149747, 'f1_graph_with_sep': 0.005915178571428571, 'em_graph_with_sep': 0.029668016186149747}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_3540/
+For the game: TEMPLE
+{'f1_token_without_sep': 0.00599723080886139, 'em_token_without_sep': 0.2498043160496064, 'f1_token_with_sep': 0.0056691943585780525, 'em_token_with_sep': 0.28221085682693264, 'f1_graph_without_sep': 0.0048843218701700155, 'em_graph_without_sep': 0.015864026228050894, 'f1_graph_with_sep': 0.0048843218701700155, 'em_graph_with_sep': 0.015864026228050894}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_3540/
+For the game: test
+{'f1_token_without_sep': 0.006563590054449752, 'em_token_without_sep': 0.27493895593992385, 'f1_token_with_sep': 0.0062163013654925985, 'em_token_with_sep': 0.29154236269489975, 'f1_graph_without_sep': 0.004983011102603369, 'em_graph_without_sep': nan, 'f1_graph_with_sep': 0.004983011102603369, 'em_graph_with_sep': nan}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_6843/
+For the game: ZORK1
+{'f1_token_without_sep': 0.0056786117381489925, 'em_token_without_sep': 0.3898866419696958, 'f1_token_with_sep': 0.005383218115124154, 'em_token_with_sep': 0.39769842845576414, 'f1_graph_without_sep': 0.005907872460496614, 'em_graph_without_sep': nan, 'f1_graph_with_sep': 0.005907872460496614, 'em_graph_with_sep': nan}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_6843/
+For the game: LIBRARY
+{'f1_token_without_sep': 0.005682180173292547, 'em_token_without_sep': 0.1756980817121543, 'f1_token_with_sep': 0.005474125573394496, 'em_token_with_sep': 0.1909496469794451, 'f1_graph_without_sep': 0.004670775993883792, 'em_graph_without_sep': 0.008861847388971437, 'f1_graph_with_sep': 0.004670775993883792, 'em_graph_with_sep': 0.008861847388971437}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_6843/
+For the game: DETECTIVE
+{'f1_token_without_sep': 0.004686299923195091, 'em_token_without_sep': 0.30211457657603025, 'f1_token_with_sep': 0.004842309907834102, 'em_token_with_sep': 0.3501719303639, 'f1_graph_without_sep': 0.004338277649769585, 'em_graph_without_sep': nan, 'f1_graph_with_sep': 0.004338277649769585, 'em_graph_with_sep': nan}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_6843/
+For the game: BALANCES
+{'f1_token_without_sep': 0.006786616161616175, 'em_token_without_sep': 0.3356616112955789, 'f1_token_with_sep': 0.006380208333333333, 'em_token_with_sep': 0.3301558611991749, 'f1_graph_without_sep': 0.006881313131313131, 'em_graph_without_sep': 0.08102699240095179, 'f1_graph_with_sep': 0.006881313131313131, 'em_graph_with_sep': 0.08102699240095179}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_6843/
+For the game: PENTARI
+{'f1_token_without_sep': 0.0054725241545893685, 'em_token_without_sep': 0.29559286683112523, 'f1_token_with_sep': 0.005441859148550725, 'em_token_with_sep': 0.3161466853561461, 'f1_graph_without_sep': 0.004415760869565217, 'em_graph_without_sep': nan, 'f1_graph_with_sep': 0.004415760869565217, 'em_graph_with_sep': nan}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_6843/
+For the game: ZTUU
+{'f1_token_without_sep': 0.005507079725829715, 'em_token_without_sep': 0.31377374010492454, 'f1_token_with_sep': 0.005339387175324675, 'em_token_with_sep': 0.3298657738356402, 'f1_graph_without_sep': 0.006341314935064935, 'em_graph_without_sep': 0.05038631027364461, 'f1_graph_with_sep': 0.006341314935064935, 'em_graph_with_sep': 0.05038631027364461}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_6843/
+For the game: LUDICORP
+{'f1_token_without_sep': 0.005962481146304679, 'em_token_without_sep': 0.3442218893091118, 'f1_token_with_sep': 0.0056234092194570135, 'em_token_with_sep': 0.359030964490441, 'f1_graph_without_sep': 0.0062535350678733035, 'em_graph_without_sep': 0.06532895400880998, 'f1_graph_with_sep': 0.0062535350678733035, 'em_graph_with_sep': 0.06532895400880998}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_6843/
+For the game: DEEPHOME
+{'f1_token_without_sep': 0.0060887896825397, 'em_token_without_sep': 0.40311280857215137, 'f1_token_with_sep': 0.005620659722222222, 'em_token_with_sep': 0.3945762599727842, 'f1_graph_without_sep': 0.006312003968253968, 'em_graph_without_sep': 0.0866591071194491, 'f1_graph_with_sep': 0.006312003968253968, 'em_graph_with_sep': 0.0866591071194491}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_6843/
+For the game: TEMPLE
+{'f1_token_without_sep': 0.005979118366821233, 'em_token_without_sep': 0.27474176684910484, 'f1_token_with_sep': 0.005611838292117465, 'em_token_with_sep': 0.29651281014692543, 'f1_graph_without_sep': 0.005651081916537867, 'em_graph_without_sep': 0.040079909633483554, 'f1_graph_with_sep': 0.005651081916537867, 'em_graph_with_sep': 0.040079909633483554}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_6843/
+For the game: test
+{'f1_token_without_sep': 0.005909225051046513, 'em_token_without_sep': 0.3216594208641799, 'f1_token_with_sep': 0.005610872495533436, 'em_token_with_sep': 0.33453985724970603, 'f1_graph_without_sep': 0.00590124904287902, 'em_graph_without_sep': nan, 'f1_graph_with_sep': 0.00590124904287902, 'em_graph_with_sep': nan}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_7561/
+For the game: ZORK1
+{'f1_token_without_sep': 0.0063076091045899145, 'em_token_without_sep': 0.3656097449783413, 'f1_token_with_sep': 0.005890237020316027, 'em_token_with_sep': 0.37961520130249476, 'f1_graph_without_sep': 0.005114277652370203, 'em_graph_without_sep': nan, 'f1_graph_with_sep': 0.005114277652370203, 'em_graph_with_sep': nan}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_7561/
+For the game: LIBRARY
+{'f1_token_without_sep': 0.0064029051987767515, 'em_token_without_sep': 0.17296430129511695, 'f1_token_with_sep': 0.006074397935779816, 'em_token_with_sep': 0.1946295053923607, 'f1_graph_without_sep': 0.00398987003058104, 'em_graph_without_sep': 0.0, 'f1_graph_with_sep': 0.00398987003058104, 'em_graph_with_sep': 0.0}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_7561/
+For the game: DETECTIVE
+{'f1_token_without_sep': 0.005562355990783407, 'em_token_without_sep': 0.314039537782887, 'f1_token_with_sep': 0.00557585685483871, 'em_token_with_sep': 0.35386318996409377, 'f1_graph_without_sep': 0.004356278801843318, 'em_graph_without_sep': nan, 'f1_graph_with_sep': 0.004356278801843318, 'em_graph_with_sep': nan}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_7561/
+For the game: BALANCES
+{'f1_token_without_sep': 0.007770412457912459, 'em_token_without_sep': 0.3252444188600787, 'f1_token_with_sep': 0.007238399621212121, 'em_token_with_sep': 0.3157649403681853, 'f1_graph_without_sep': 0.00615530303030303, 'em_graph_without_sep': 0.05050179951202131, 'f1_graph_with_sep': 0.00615530303030303, 'em_graph_with_sep': 0.05050179951202131}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_7561/
+For the game: PENTARI
+{'f1_token_without_sep': 0.005604619565217389, 'em_token_without_sep': 0.2863396495366043, 'f1_token_with_sep': 0.005604619565217391, 'em_token_with_sep': 0.3270532136216888, 'f1_graph_without_sep': 0.004387454710144928, 'em_graph_without_sep': nan, 'f1_graph_with_sep': 0.004387454710144928, 'em_graph_with_sep': nan}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_7561/
+For the game: ZTUU
+{'f1_token_without_sep': 0.0064202290764790795, 'em_token_without_sep': 0.30536155736878584, 'f1_token_with_sep': 0.005910105519480519, 'em_token_with_sep': 0.321721549228101, 'f1_graph_without_sep': 0.005580357142857143, 'em_graph_without_sep': 0.021814009180291666, 'f1_graph_with_sep': 0.005580357142857143, 'em_graph_with_sep': 0.021814009180291666}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_7561/
+For the game: LUDICORP
+{'f1_token_without_sep': 0.0065163084464555454, 'em_token_without_sep': 0.3137252255471963, 'f1_token_with_sep': 0.006009615384615385, 'em_token_with_sep': 0.3258429257919429, 'f1_graph_without_sep': 0.0053273472850678735, 'em_graph_without_sep': 0.029160527857734563, 'f1_graph_with_sep': 0.0053273472850678735, 'em_graph_with_sep': 0.029160527857734563}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_7561/
+For the game: DEEPHOME
+{'f1_token_without_sep': 0.007142857142857146, 'em_token_without_sep': 0.4016987729055741, 'f1_token_with_sep': 0.00646391369047619, 'em_token_with_sep': 0.3979390088564897, 'f1_graph_without_sep': 0.00638640873015873, 'em_graph_without_sep': 0.060307528646759055, 'f1_graph_with_sep': 0.00638640873015873, 'em_graph_with_sep': 0.060307528646759055}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_7561/
+For the game: TEMPLE
+{'f1_token_without_sep': 0.0061642677743431, 'em_token_without_sep': 0.2740196375030125, 'f1_token_with_sep': 0.0057054192426584235, 'em_token_with_sep': 0.3078429842421287, 'f1_graph_without_sep': 0.0052224207882534774, 'em_graph_without_sep': 0.021099047451835804, 'f1_graph_with_sep': 0.0052224207882534774, 'em_graph_with_sep': 0.021099047451835804}
+--------------
+Outputs for model: ./complete_trained_model_graph_1024_seed_7561/
+For the game: test
+{'f1_token_without_sep': 0.006543317700357426, 'em_token_without_sep': 0.3083748328563376, 'f1_token_with_sep': 0.0060989044952782035, 'em_token_with_sep': 0.323873913499439, 'f1_graph_without_sep': 0.005292081419091373, 'em_graph_without_sep': nan, 'f1_graph_with_sep': 0.005292081419091373, 'em_graph_with_sep': nan}
+--------------

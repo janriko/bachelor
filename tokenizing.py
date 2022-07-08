@@ -1,71 +1,77 @@
-from typing import List, Dict
-
-import dataset
-from datasets import Dataset, DatasetDict
-from tokenizers.tokenizers import Tokenizer
-from transformers import BertTokenizer, BatchEncoding, BartTokenizer, AutoTokenizer, GPT2Tokenizer, PreTrainedTokenizerFast
+import numpy as np
+from datasets import DatasetDict
+from transformers import PreTrainedTokenizerFast
 from transformers.file_utils import PaddingStrategy, ExplicitEnum
+from scipy import stats
 
-from data_models.preprocessing.PreprocessedDataset import PreprocessedDataset
-from data_models.tokenized.TokenizedDataset import TokenizedDataset
-
-# from data_models.tokenized.TokenizedState import TokenizedState
-from tokenizer.GraphTokenizer import GraphTokenizer
-#
-# special_text_tokens: Dict[str, str] = {
-#     "cls_token": "[OBS]",
-#     "sep_token": "[ACT]",
-# }
-#
-# special_graph_tokens: Dict[str, str] = {
-#     "cls_token": "[GRAPH]",
-#     "sep_token": "[TRIPLE]",
-# }
-#
-# special_tokens_double_graph = {
-#     "cls_token": "[GRAPH]",
-#     "sep_token": "[TRIPLE]",
-#     "additional_special_tokens": ["[OBS]", "[ACT]"]
-# }
-#
-# special_tokens_double_text = {
-#     # "cls_token": "[OBS]",
-#     # "sep_token": "[ACT]",
-#     # "bos_token": "[GRAPH]",
-#     # "unk_token": "[TRIPLE]",
-#     "pad_token": "[PAD]",
-#     # "additional_special_tokens": ["[GRAPH]", "[TRIPLE]"]
-# }
-#
-#
-# double_tokenizer_graph = BertTokenizer.from_pretrained("bert-base-uncased")
-# double_tokenizer_text = GPT2Tokenizer.from_pretrained("gpt2")
-#
-# # add custom tokens
-# double_tokenizer_graph.add_special_tokens(special_tokens_dict=special_tokens_double_graph)
-# double_tokenizer_text.add_special_tokens(special_tokens_dict=special_tokens_double_text)
-from pathlib import Path
-from tokenizers.models import BPE
-from tokenizers.pre_tokenizers import Whitespace
-from tokenizers.trainers import BpeTrainer
-
-tokenizer = PreTrainedTokenizerFast(tokenizer_file="jericho/jericho.json")
+tokenizer = PreTrainedTokenizerFast(tokenizer_file="jericho/jericho_1024_15800.json")
 tokenizer.add_special_tokens({'pad_token': '[PAD]'})
 tokenizer.add_special_tokens({'mask_token': '[MASK]'})
+
+
+class GameType(ExplicitEnum):
+    TRAIN = "train"
+    TEST = "test"
+    ALL = "ALL"
+
+    LOOSE = "LOOSE"
+    KARN = "KARN"
+    BALLYHOO = "BALLYHOO"
+    ZORK2 = "ZORK2"
+    ADVENTURELAND = "ADVENTURELAND"
+    OMNIQUEST = "OMNIQUEST"
+    WEAPON = "WEAPON"
+    NINEOFIVE = "905"
+    WISHBRINGER = "WISHBRINGER"
+    NIGHT = "NIGHT"
+    TRYST205 = "TRYST205"
+    ZORK3 = "ZORK3"
+    MURDAC = "MURDAC"
+    AFFLICTED = "AFFLICTED"
+    MOONLIT = "MOONLIT"
+    DRAGON = "DRAGON"
+    REVERB = "REVERB"
+    JEWEL = "JEWEL"
+    ENTER = "ENTER"
+    SNACKTIME = "SNACKTIME"
+    ENCHANTER = "ENCHANTER"
+    ACORNCOURT = "ACORNCOURT"
+    HUNTDARK = "HUNTDARK"
+    GOLD = "GOLD"
+    YOMOMMA = "YOMOMMA"
+    INHUMANE = "INHUMANE"
+    ZENON = "ZENON"
+    DETECTIVE = "DETECTIVE"
+    ZORK1 = "ZORK1"
+    BALANCES = "BALANCES"
+    LUDICORP = "LUDICORP"
+    PENTARI = "PENTARI"
+    ZTUU = "ZTUU"
+    LIBRARY = "LIBRARY"
+    TEMPLE = "TEMPLE"
+    DEEPHOME = "DEEPHOME"
+
 
 class PipelineType(ExplicitEnum):
     TEXT = "text"
     GRAPH = "graph"
 
 
+def text_tokenize_function_without_padding(state):
+    return tokenizer(
+        text=state["text"],
+        add_special_tokens=False,
+        padding=PaddingStrategy.DO_NOT_PAD,
+    )
+
+
 def text_tokenize_function(state):
     return tokenizer(
         text=state["text"],
         truncation=True,
-        add_special_tokens=True,
+        add_special_tokens=False,
         padding=PaddingStrategy.MAX_LENGTH,
-        max_length=512,
-        # return_tensors="pt"
+        max_length=1024,
     )
 
 
@@ -73,10 +79,9 @@ def text_plus_1_tokenize_function(state):
     return tokenizer(
         text=state["text_plus_1"],
         truncation=True,
-        add_special_tokens=True,
+        add_special_tokens=False,
         padding=PaddingStrategy.MAX_LENGTH,
-        max_length=512,
-        #return_tensors="pt"
+        max_length=1024,
     )
 
 
@@ -86,8 +91,7 @@ def graph_tokenize_function(state):
         truncation=True,
         add_special_tokens=False,
         padding=PaddingStrategy.MAX_LENGTH,
-        max_length=512,
-        # return_tensors="pt"
+        max_length=1024,
     )
 
 
@@ -97,42 +101,58 @@ def graph_plus_1_tokenize_function(state):
         truncation=True,
         add_special_tokens=False,
         padding=PaddingStrategy.MAX_LENGTH,
-        max_length=512,
-        # return_tensors="pt"
+        max_length=1024,
     )
 
 
-def tokenize_text_and_graph(preprocessed_dataset: DatasetDict, pipeline_type: PipelineType, remove_labels: bool = False) -> DatasetDict:
+def get_length(liste):
+    return len(liste)
+
+
+is_running_get_length = True
+
+
+def tokenize_text_and_graph(preprocessed_dataset: DatasetDict, pipeline_type: PipelineType, remove_labels: bool = False, game_type: GameType = GameType.ALL) -> DatasetDict:
     tokenized_datasets = preprocessed_dataset
     if pipeline_type == PipelineType.TEXT:
         if remove_labels:
             tokenized_datasets = tokenized_datasets.map(text_tokenize_function, batched=True)
         else:
-            tokenized_datasets = tokenized_datasets.map(text_plus_1_tokenize_function, batched=True)
-            tokenized_datasets = tokenized_datasets.rename_column("input_ids", "labels")
-            tokenized_datasets = tokenized_datasets.remove_columns(["attention_mask"])
-            tokenized_datasets = tokenized_datasets.map(text_tokenize_function, batched=True)
-        print("Text-Separation-Token: " + str(tokenizer.convert_tokens_to_ids("[ACT]")))
-        print("Text-Pad-Token: " + str(tokenizer.convert_tokens_to_ids("[PAD]")))
+            if is_running_get_length:
+                with open("JerichoWorld-main/data/input_length.txt", "a") as outfile:
+                    # train = tokenized_datasets.map(text_tokenize_function_without_padding, batched=True)['train']['input_ids']
+                    test = tokenized_datasets.map(text_tokenize_function_without_padding, batched=True)['test']['input_ids']
+                    all_states = test  # + train
+                    all_state_lengths = np.array(list(map(len, all_states)))
+                    if (game_type == GameType.TEST) or (game_type == GameType.TRAIN) or (game_type == GameType.ALL):
+                        with open("JerichoWorld-main/data/all_len_" + game_type.value + ".txt", "a") as all_len_outfile:
+                            all_len_outfile.write("\n".join(str(item) for item in all_state_lengths))
+
+                    mode = stats.mode(all_state_lengths)
+                    text = "Game: " + game_type.value + \
+                           "\n    Standard Deviation: " + str(np.std(all_state_lengths)) + \
+                           "\n    Mean: " + str(np.mean(all_state_lengths)) + \
+                           "\n    Median: " + str(np.median(all_state_lengths)) + \
+                           "\n    Mode: " + str(mode[0][0]) + \
+                           "\n    Max length: " + str(np.max(all_state_lengths)) + \
+                           "\n    Min length: " + str(np.min(all_state_lengths)) + \
+                           "\n--------------\n"
+                    outfile.write(text)
+            else:
+                tokenized_datasets = tokenized_datasets.map(text_plus_1_tokenize_function, batched=True)
+                tokenized_datasets = tokenized_datasets.rename_column("input_ids", "labels")
+                tokenized_datasets = tokenized_datasets.remove_columns(["attention_mask"])
+                tokenized_datasets = tokenized_datasets.map(text_tokenize_function, batched=True)
+        print("Text-ACT-Token: " + str(tokenizer.convert_tokens_to_ids("[ACT]")))
+        print("Text-GRAPH-Token: " + str(tokenizer.convert_tokens_to_ids("[GRAPH]")))
+        print("Text-PAD-Token: " + str(tokenizer.convert_tokens_to_ids("[PAD]")))
     else:
         tokenized_datasets = tokenized_datasets.map(graph_plus_1_tokenize_function, batched=True)
         tokenized_datasets = tokenized_datasets.rename_column("input_ids", "labels")
         tokenized_datasets = tokenized_datasets.map(graph_tokenize_function, batched=True)
-        print("Graph-Separation-Token: " + str(tokenizer.convert_tokens_to_ids("[TRIPLE]")))
-        print("Graph-Pad-Token: " + str(tokenizer.convert_tokens_to_ids("[PAD]")))
-        # train_dataset = tokenized_datasets["train"]
-        # test_dataset = tokenized_datasets["test"]
-        #
-        # tokenized_train_dataset = double_tokenizer_graph.encode(train_dataset, "graph", False)
-        # tokenized_test_dataset = double_tokenizer_graph.encode(test_dataset, "graph", False)
-        #
-        # temp_tokenized_train_dataset = double_tokenizer_graph.encode(train_dataset, "graph_diff", False)
-        # temp_tokenized_test_dataset = double_tokenizer_graph.encode(test_dataset, "graph_diff", False)
-        #
-        # tokenized_train_dataset = tokenized_train_dataset.add_column("labels", temp_tokenized_train_dataset["input_ids"].tolist())
-        # tokenized_test_dataset = tokenized_test_dataset.add_column("labels", temp_tokenized_test_dataset["input_ids"].tolist())
-        #
-        # tokenized_datasets = DatasetDict({"train": tokenized_train_dataset, "test": tokenized_test_dataset})
+        print("Text-ACT-Token: " + str(tokenizer.convert_tokens_to_ids("[ACT]")))
+        print("Text-GRAPH-Token: " + str(tokenizer.convert_tokens_to_ids("[GRAPH]")))
+        print("Text-PAD-Token: " + str(tokenizer.convert_tokens_to_ids("[PAD]")))
 
     tokenized_datasets = tokenized_datasets.remove_columns(["graph"])
     tokenized_datasets = tokenized_datasets.remove_columns(["text"])

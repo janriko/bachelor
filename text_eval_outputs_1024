@@ -1,0 +1,120 @@
+Outputs for model: ./complete_trained_model_text_1024_seed_3540/
+For the game: ZORK1
+{'f1': 0.004483810665914221, 'em': 0.45301112082611994}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_3540/
+For the game: LIBRARY
+{'f1': 0.0033776519495412843, 'em': 0.4722297771567477}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_3540/
+For the game: DETECTIVE
+{'f1': 0.0030196932603686636, 'em': 0.460144539317694}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_3540/
+For the game: BALANCES
+{'f1': 0.004677635732323233, 'em': 0.4390646240343581}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_3540/
+For the game: PENTARI
+{'f1': 0.002880151721014493, 'em': 0.5176750632607747}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_3540/
+For the game: ZTUU
+{'f1': 0.005271746482683983, 'em': 0.4111671882173647}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_3540/
+For the game: LUDICORP
+{'f1': 0.003885923359728507, 'em': 0.48630472958675885}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_3540/
+For the game: DEEPHOME
+{'f1': 0.005115327380952381, 'em': 0.41264392747438833}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_3540/
+For the game: TEMPLE
+{'f1': 0.004030018353941268, 'em': 0.4727783881732771}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_3540/
+For the game: test
+{'f1': 0.004132070731240429, 'em': 0.46246742656694084}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_6843/
+For the game: ZORK1
+{'f1': 0.004380202454853273, 'em': 0.4667312101748924}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_6843/
+For the game: LIBRARY
+{'f1': 0.003730050649847095, 'em': 0.47796616788481106}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_6843/
+For the game: DETECTIVE
+{'f1': 0.003249207949308756, 'em': 0.46586624393369375}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_6843/
+For the game: BALANCES
+{'f1': 0.004657907196969697, 'em': 0.4379368509840577}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_6843/
+For the game: PENTARI
+{'f1': 0.00341796875, 'em': 0.5486799365215036}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_6843/
+For the game: ZTUU
+{'f1': 0.004827854437229437, 'em': 0.4119116382880582}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_6843/
+For the game: LUDICORP
+{'f1': 0.004199660633484163, 'em': 0.5051655172051156}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_6843/
+For the game: DEEPHOME
+{'f1': 0.004501488095238095, 'em': 0.4254986587835621}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_6843/
+For the game: TEMPLE
+{'f1': 0.004426982708655333, 'em': 0.5042056216389641}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_6843/
+For the game: test
+{'f1': 0.004257443609622256, 'em': 0.4773504364701154}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_7561/
+For the game: ZORK1
+{'f1': 0.004303047404063206, 'em': 0.45479066856865263}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_7561/
+For the game: LIBRARY
+{'f1': 0.0031357511467889907, 'em': 0.48540807518068435}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_7561/
+For the game: DETECTIVE
+{'f1': 0.0029656898041474653, 'em': 0.46936199640802617}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_7561/
+For the game: BALANCES
+{'f1': 0.004494160353535353, 'em': 0.4309250284255698}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_7561/
+For the game: PENTARI
+{'f1': 0.002759850543478261, 'em': 0.516235084475258}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_7561/
+For the game: ZTUU
+{'f1': 0.004595339556277056, 'em': 0.4200523975995178}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_7561/
+For the game: LUDICORP
+{'f1': 0.004070630656108598, 'em': 0.47600384610267643}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_7561/
+For the game: DEEPHOME
+{'f1': 0.004489087301587301, 'em': 0.4276768289192122}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_7561/
+For the game: TEMPLE
+{'f1': 0.004253405139103555, 'em': 0.47823702886967245}
+--------------
+Outputs for model: ./complete_trained_model_text_1024_seed_7561/
+For the game: test
+{'f1': 0.004059788157223073, 'em': 0.4629286634216346}
+--------------

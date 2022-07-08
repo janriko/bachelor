@@ -133,3 +133,7 @@ complete_trained_model_text/
 complete_trained_model_graph/
 cached_data/
 graph_model_pretrained/
+complete_trained_model_text*
+complete_trained_model_graph*
+Mappe1.xlsx
+~$Mappe1.xlsx

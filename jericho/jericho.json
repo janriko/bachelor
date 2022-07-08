@@ -19,57 +19,57 @@
   "added_tokens": [
     {
       "id": 0,
-      "special": true,
       "content": "[OBS]",
       "single_word": false,
       "lstrip": false,
       "rstrip": false,
-      "normalized": false
+      "normalized": false,
+      "special": true
     },
     {
       "id": 1,
-      "special": true,
       "content": "[ACT]",
       "single_word": false,
       "lstrip": false,
       "rstrip": false,
-      "normalized": false
+      "normalized": false,
+      "special": true
     },
     {
       "id": 2,
-      "special": true,
       "content": "[GRAPH]",
       "single_word": false,
       "lstrip": false,
       "rstrip": false,
-      "normalized": false
+      "normalized": false,
+      "special": true
     },
     {
       "id": 3,
-      "special": true,
       "content": "[TRIPLE]",
       "single_word": false,
       "lstrip": false,
       "rstrip": false,
-      "normalized": false
+      "normalized": false,
+      "special": true
     },
     {
       "id": 4,
-      "special": true,
       "content": "[PAD]",
       "single_word": false,
       "lstrip": false,
       "rstrip": false,
-      "normalized": false
+      "normalized": false,
+      "special": true
     },
     {
       "id": 5,
-      "special": true,
       "content": "[MASK]",
       "single_word": false,
       "lstrip": false,
       "rstrip": false,
-      "normalized": false
+      "normalized": false,
+      "special": true
     }
   ],
   "normalizer": null,
